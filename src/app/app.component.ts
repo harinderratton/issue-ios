@@ -15,32 +15,32 @@ export class AppComponent implements OnInit {
     {
       title: 'Ministerio Jesucristo Vive',
       url: '/',
-      icon: 'person'
+      icon: 'person-sharp'
     },
     {
       title: 'Libro - INSIDE APP',
-      url: '/',
-      icon: 'paper-plane'
+      url: '/libro',
+      icon: 'book'
     },
     {
       title: 'Fragmentos',
-      url: '/',
-      icon: 'play'
+      url: '/fragmentos',
+      icon: 'play-circle-outline'
     },
     {
       title: 'Palabras de vida',
       url: '/',
-      icon: 'play'
+      icon: 'play-circle-outline'
     },
     {
       title: 'Eventos INSIDE APP',
-      url: '/',
+      url: '/event',
       icon: 'calendar'
     },
     {
       title: 'Biografía INSIDE APP',
-      url: '/',
-      icon: 'calendar'
+      url: '/bio',
+      icon: 'leaf'
     },
     {
       title: 'Fundación',
@@ -54,33 +54,33 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Chat',
-      url: '/',
-      icon: 'chatbox'
+      url: '/chat',
+      icon: 'chatbox-ellipses-sharp'
     },
     {
       title: 'Contáctenos INSIDE APP',
-      url: '/',
-      icon: 'location'
+      url: '/contact',
+      icon: 'location-sharp'
     },
     {
       title: 'Facebook',
       url: '/',
-      icon: 'heart'
+      icon: 'logo-facebook'
     },
     {
       title: 'Instagram',
       url: '/',
-      icon: 'heart'
+      icon: 'logo-instagram'
     },
     {
       title: 'Twitter',
       url: '/',
-      icon: 'heart'
+      icon: 'logo-twitter'
     },
     {
       title: 'Youtube',
       url: '/',
-      icon: 'heart'
+      icon: 'logo-youtube'
     },
     {
       title: 'Donaciones',

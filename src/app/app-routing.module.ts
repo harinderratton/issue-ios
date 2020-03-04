@@ -18,6 +18,26 @@ const routes: Routes = [
   {
     path: 'event',
     loadChildren: () => import('./event/event.module').then( m => m.EventPageModule)
+  },
+  {
+    path: 'libro',
+    loadChildren: () => import('./libro/libro.module').then( m => m.LibroPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'fragmentos',
+    loadChildren: () => import('./fragmentos/fragmentos.module').then( m => m.FragmentosPageModule)
+  },
+  {
+    path: 'palabras',
+    loadChildren: () => import('./palabras/palabras.module').then( m => m.PalabrasPageModule)
   }
 ];
 
