@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-
+import { FCM } from '@ionic-native/fcm/ngx';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { ApiService } from './services/api/api.service';
+import { NotiService } from './services/noti/noti.service';
+import { AES256 } from '@ionic-native/aes-256/ngx';
+import { Component, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  
+  fcm_token:any;
+  response:any;
+  secureKey:any;
+
   public selectedIndex = 0;
   public appPages = [
     {
@@ -18,7 +26,7 @@ export class AppComponent implements OnInit {
       icon: 'person-sharp'
     },
     {
-      title: 'Libro - INSIDE APP',
+      title: 'Libro',
       url: '/libro',
       icon: 'book'
     },
@@ -29,16 +37,16 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Palabras de vida',
-      url: '/',
+      url: '/palabras',
       icon: 'play-circle-outline'
     },
     {
-      title: 'Eventos INSIDE APP',
+      title: 'Eventos',
       url: '/event',
       icon: 'calendar'
     },
     {
-      title: 'Biografía INSIDE APP',
+      title: 'Biografía',
       url: '/bio',
       icon: 'leaf'
     },
@@ -58,7 +66,7 @@ export class AppComponent implements OnInit {
       icon: 'chatbox-ellipses-sharp'
     },
     {
-      title: 'Contáctenos INSIDE APP',
+      title: 'Contáctenos',
       url: '/contact',
       icon: 'location-sharp'
     },
@@ -93,19 +101,69 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private fcm: FCM,
+    private router: Router,
+    public apiservice:ApiService,
+    public notifi:NotiService,
+    private aes256: AES256
   ) {
     this.initializeApp();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
 
   ngOnInit() {
-    
   }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.backgroundColorByHexString('#1e6075');
+      this.splashScreen.hide(); 
+      this.fcm.getToken().then(token => {
+        this.fcm_token = token;
+        localStorage.setItem('uuid',this.fcm_token);
+        console.log(this.fcm_token);
+        this.savetoken(this.fcm_token);
+      });
+      this.fcm.onNotification().subscribe(data => {
+        console.log(data);
+        if (data.wasTapped) {
+          console.log('Received in background');
+          this.router.navigate([data.landing_page, data.price]);
+        } else {
+          console.log('Received in foreground');
+          this.router.navigate([data.landing_page, data.price]);
+        }   
+      });
+
+    
+    });
+
+    }
+
+
+
+  savetoken(i){   
+    this.apiservice.postdata('updatetokens', {token:i},'').subscribe(data =>{ 
+    console.log(data);
+    this.response=data;
+    this.notifi.stopLoading();     
+    console.log(data);
+  if(this.response.status == 1){  
+      }else{
+  this.notifi.presentToast('Please connect to network and restart the app','danger');
+   }
+
+}, (err) => {
+  console.log(err)
+});
+
+ }
+ 
+//  OnInit(){
+
+
+//  }
+
+
 }
