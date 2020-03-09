@@ -12,13 +12,14 @@
     <h3 secHdng>Eventos</h3>
     <span *ngFor="let item of items">
         <h2>See You at midweek</h2>
-        <span date>22 Feb, 2020 - 12:30</span>
-        <p>{{item.title}}</p>
-    
-    
+
+
+    <span date>{{item.created_at}}</span>
+        <p>{{item.title}}</p>   
         <h2>Concierto san marcos</h2>
-        <p>{{!item.descr!}}</p>
-      
+       
+        <div [innerHTML]="item.descr"></div>  
+       <hr style="background-color:grey;margin-top: 25px;margin-bottom: 25px;">  
     </span>
  
 

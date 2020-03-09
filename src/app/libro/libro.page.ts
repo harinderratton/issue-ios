@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FCM } from '@ionic-native/fcm/ngx';
 @Component({
   selector: 'app-libro',
   templateUrl: './libro.page.html',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LibroPage implements OnInit {
 
-  constructor() { }
+  constructor( private fcm: FCM,) {
+    this.fcm.getToken().then(token => {
+    console.log(token);
+    });
+   }
 
   ngOnInit() {
   }

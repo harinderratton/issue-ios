@@ -14,7 +14,7 @@ import { socket_config } from 'config';
 const config: SocketIoConfig = { url: socket_config.SOCKET_URL, options: {} };
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AES256 } from '@ionic-native/aes-256/ngx';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +26,7 @@ import { AES256 } from '@ionic-native/aes-256/ngx';
     SplashScreen,
     UniqueDeviceID,
     AES256,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

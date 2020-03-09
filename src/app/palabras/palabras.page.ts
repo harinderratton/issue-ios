@@ -13,7 +13,7 @@ export class PalabrasPage implements OnInit {
   @ViewChild('slides', {static: false}) slides: IonSlides;
   response:any;
   items:any;
-  
+  errors=['',null,undefined];
   slideOpts = {
     slidesPerView:1.15,
     spaceBetween: 0,
