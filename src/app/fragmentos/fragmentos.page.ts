@@ -13,7 +13,7 @@ export class FragmentosPage implements OnInit {
   @ViewChild('slides', {static: false}) slides: IonSlides;
   response:any;
   items:any;
-  
+  errors=['',null,undefined];
   slideOpts = {
     slidesPerView:1.15,
     spaceBetween: 0,
@@ -47,6 +47,7 @@ ngOnInit() {
 if(this.response.status == 1){  
   this.notifi.stopLoading(); 
   this.items= this.response.data;
+  console.log(this.items);
  
 }else if( this.response.status == 0){
   this.notifi.stopLoading(); 

@@ -7,6 +7,7 @@ import { ApiService } from './services/api/api.service';
 import { NotiService } from './services/noti/noti.service';
 import { AES256 } from '@ionic-native/aes-256/ngx';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   fcm_token:any;
   response:any;
   secureKey:any;
+  errors:any = ['',null,undefined];
 
   public selectedIndex = 0;
   public appPages = [
@@ -72,8 +74,9 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Facebook',
-      url: '/',
-      icon: 'logo-facebook'
+      url: '',
+      icon: 'logo-facebook',
+      link:'https://www.facebook.com/jesucristoviveministerio'
     },
     {
       title: 'Instagram',
@@ -106,7 +109,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     public apiservice:ApiService,
     public notifi:NotiService,
-    private aes256: AES256
+    private aes256: AES256,
+    private iab: InAppBrowser
   ) {
     this.initializeApp();
   }
@@ -141,8 +145,6 @@ export class AppComponent implements OnInit {
 
     }
 
-
-
   savetoken(i){   
     this.apiservice.postdata('updatetokens', {token:i},'').subscribe(data =>{ 
     console.log(data);
@@ -159,11 +161,23 @@ export class AppComponent implements OnInit {
 });
 
  }
- 
-//  OnInit(){
+
+ link(l){
+   if(this.errors.indexOf(l.link)==-1){
+    const browser = this.iab.create(l.link);
+
+    browser.on('loadstop').subscribe(event => {
+       browser.insertCSS({ code: "body{color: red;" });
+    });
+   }
+   else{
+    this.router.navigate([l.link,'']);
+
+   }
 
 
-//  }
+ }
+
 
 
 }
