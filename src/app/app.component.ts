@@ -164,18 +164,13 @@ export class AppComponent implements OnInit {
 
  link(l){
    if(this.errors.indexOf(l.link)==-1){
+    console.log('first')
     const browser = this.iab.create(l.link);
-
-    browser.on('loadstop').subscribe(event => {
-       browser.insertCSS({ code: "body{color: red;" });
-    });
    }
    else{
-    this.router.navigate([l.link,'']);
-
+    console.log('sec')
+    this.router.navigate([l.url]);
    }
-
-
  }
 
 
