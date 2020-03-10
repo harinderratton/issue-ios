@@ -28,7 +28,12 @@ export class PalabrasPage implements OnInit {
     private sanitizer: DomSanitizer
 
   ) { 
+   
+  }
+
+  ionViewDidEnter(){
     this.vip_training();
+
 
   }
 ngOnInit() {

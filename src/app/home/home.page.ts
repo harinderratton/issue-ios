@@ -20,6 +20,9 @@ export class HomePage implements OnInit {
     public apiservice:ApiService,
 
   ) {
+    
+   }
+   ionViewDidEnter(){
     this.getpic();
    }
 

@@ -60,7 +60,8 @@ export class AppComponent implements OnInit {
     {
       title: 'Acerca de Nosotros',
       url: '/',
-      icon: 'leaf'
+      icon: 'leaf',
+      link:'http://www.jesucristovive.com/es/conocenos/pastora-monica-jaquez.html'
     },
     {
       title: 'Chat',
@@ -81,17 +82,20 @@ export class AppComponent implements OnInit {
     {
       title: 'Instagram',
       url: '/',
-      icon: 'logo-instagram'
+      icon: 'logo-instagram',
+      link:'https://www.instagram.com/monicajaquez/'
     },
     {
       title: 'Twitter',
       url: '/',
-      icon: 'logo-twitter'
+      icon: 'logo-twitter',
+      link:'https://twitter.com/MJesucristoVive'
     },
     {
       title: 'Youtube',
       url: '/',
-      icon: 'logo-youtube'
+      icon: 'logo-youtube',
+      link:'https://www.youtube.com/user/MinJesucristoVive'
     },
     {
       title: 'Donaciones',
