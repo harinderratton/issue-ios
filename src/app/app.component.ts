@@ -7,7 +7,7 @@ import { ApiService } from './services/api/api.service';
 import { NotiService } from './services/noti/noti.service';
 import { AES256 } from '@ionic-native/aes-256/ngx';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser , InAppBrowserOptions} from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,9 +23,16 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
+      title: 'Home',
+      url: '/home',
+      icon: 'home',
+  
+    },
+    {
       title: 'Ministerio Jesucristo Vive',
       url: '/',
-      icon: 'person-sharp'
+      icon: 'person-sharp',
+      link:'https://jesucristovive.com/'
     },
     {
       title: 'Libro',
@@ -55,18 +62,19 @@ export class AppComponent implements OnInit {
     {
       title: 'Fundación',
       url: '/',
-      icon: 'heart'
+      icon: 'heart',
+      link:'http://www.lovewithoutbarriersjcl.com/es/'
     },
     {
       title: 'Acerca de Nosotros',
       url: '/',
       icon: 'leaf',
-      link:'http://www.jesucristovive.com/es/conocenos/pastora-monica-jaquez.html'
+      link:'https://www.jesucristovive.com/es/conocenos/pastora-monica-jaquez'
     },
     {
-      title: 'Chat',
+      title: 'Live Streaming',
       url: '/chat',
-      icon: 'chatbox-ellipses-sharp'
+      icon: 'play-circle-outline'
     },
     {
       title: 'Contáctenos',
@@ -77,7 +85,7 @@ export class AppComponent implements OnInit {
       title: 'Facebook',
       url: '',
       icon: 'logo-facebook',
-      link:'https://www.facebook.com/jesucristoviveministerio'
+      link:'https://www.facebook.com/monica.jaquez.14'
     },
     {
       title: 'Instagram',
@@ -99,9 +107,11 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Donaciones',
-      url: '/',
-      icon: 'heart'
+      url: '/payment',
+      icon: 'card-outline',
+
     },
+ 
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
@@ -130,6 +140,7 @@ export class AppComponent implements OnInit {
       this.fcm.getToken().then(token => {
         this.fcm_token = token;
         localStorage.setItem('uuid',this.fcm_token);
+        console.log('---------------------below is the token----------------');
         console.log(this.fcm_token);
         this.savetoken(this.fcm_token);
       });
@@ -151,6 +162,7 @@ export class AppComponent implements OnInit {
 
   savetoken(i){   
     this.apiservice.postdata('updatetokens', {token:i},'').subscribe(data =>{ 
+      console.log('--------------------api result----------------');
     console.log(data);
     this.response=data;
     this.notifi.stopLoading();     
@@ -167,14 +179,29 @@ export class AppComponent implements OnInit {
  }
 
  link(l){
-   if(this.errors.indexOf(l.link)==-1){
+  const iosoption: InAppBrowserOptions = {
+    zoom: 'no',
+    location:'yes',
+    toolbar:'yes',
+    clearcache: 'yes',
+    clearsessioncache: 'yes',
+    disallowoverscroll: 'yes',
+    enableViewportScale: 'yes'
+  }
+   
+  if(this.errors.indexOf(l.link)==-1){
     console.log('first')
-    const browser = this.iab.create(l.link);
+    const browser = this.iab.create(l.link, '_system', iosoption);
    }
    else{
     console.log('sec')
     this.router.navigate([l.url]);
    }
+
+
+
+
+ 
  }
 
 

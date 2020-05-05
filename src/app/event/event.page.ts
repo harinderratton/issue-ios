@@ -13,6 +13,7 @@ import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class EventPage implements OnInit {
   response:any;
   items:any;
+  novideos:boolean=false;
   constructor(
     private router:Router,
     public notifi:NotiService,
@@ -20,9 +21,13 @@ export class EventPage implements OnInit {
     private sanitizer: DomSanitizer
 
   ) {
-    this.vip_training();
+    
     }
-
+ionViewDidEnter(){
+  this.novideos=false;
+  this.items=[];
+  this.vip_training();
+}
 ngOnInit() {
 }
 
@@ -34,16 +39,17 @@ logout(){
 vip_training(){
   this.notifi.presentLoading();     
   this.apiservice.postdata('events','','').subscribe(data =>{
-  
+    this.notifi.stopLoading(); 
   this.response=data;          
   console.log(data);
 if(this.response.status == 1){  
-this.notifi.stopLoading(); 
+
 this.items= this.response.data;
 
-}else if( this.response.status == 0){
-this.notifi.stopLoading(); 
-this.notifi.presentToast(this.response.msg,'danger');
+}else{
+  this.novideos=true;
+  this.items=[];
+ this.notifi.presentToast(this.response.msg,'danger');
 }
 
 }, (err) => {

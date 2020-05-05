@@ -1,115 +1,102 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Socket } from 'ng-socket-io';  
-import { Observable } from 'rxjs';
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { NotiService } from '../services/noti/noti.service';
 import { ApiService } from '../services/api/api.service';
-
+import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import { InAppBrowser , InAppBrowserOptions} from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-  @ViewChild('content',{static:true}) content: any;
-  uuid:any;
-  msgs:any=[];
-  errors:any=['',null,undefined];
+  @ViewChild('slides', {static: false}) slides: IonSlides;
   response:any;
-  items:any=[];
-  new_message:any;
-  get_message:any;
-  inherit_message:any;
-
-
-  constructor(
-    private socket: Socket,
-    private uniqueDeviceID: UniqueDeviceID,
-    public notifi:NotiService,
-    public apiservice:ApiService
-
-  ) {
-
-    this.uuid= localStorage.getItem('uuid');    
-    this.getUpdates().subscribe(new_message => {
-    this.get_message= new_message;
-    this.items.push( { 
-      sender_id:1,  
-      msg: this.get_message.message
-     });
-     this.scrollToBottom();
-});            
-this.getchat(); 
-
-   }
-
-  ngOnInit() {
-  }
-getUpdates() {
-    var self = this;
-    let observable = new Observable(observer => {
-      self.socket.on('user_get', (data) => {
-        observer.next(data);
-        // console.log(data); 
-      });
-    })
-    return observable;
-  }
-
-  send(){
-    this.inherit_message=this.new_message;
-    this.new_message='';
-    if(this.errors.indexOf(this.inherit_message)==-1){
-      if  (this.errors.indexOf(this.items)>=0){
-        this.items=[];
-      }      
-      this.items.push( { 
-        sender_id:this.uuid,  
-        msg: this.inherit_message
-       });
-    }  
-      this.socket.emit('send_message', {message : this.inherit_message,id:this.uuid }); this.scrollToBottom();
-      this.apiservice.postdata('savechat',{token:this.uuid,msg:this.inherit_message},'').subscribe(data =>{    
-      this.response= data;          
-      if(this.response.status == 1){      
-      
-      }
-      else if( this.response.status == 0){
-       this.notifi.presentToast('Server error, message not sent','danger');   
-      }
+  items:any;
+  novideos:boolean=false;
+  errors=['',null,undefined];
+  slideOpts = {
+    slidesPerView:1.15,
+    spaceBetween:20,
+    speed: 400,
+    zoom: false
+  };
   
-      }, (err) => {
-      this.notifi.stopLoading(); 
-      console.log(err)
-      }); 
+  constructor(
+    private router:Router,
+    public notifi:NotiService,
+    public apiservice:ApiService,
+    private sanitizer: DomSanitizer,
+    private iab: InAppBrowser
+
+  ) { 
+    
 
   }
 
-  scrollToBottom() {
-    var self = this;
-    setTimeout(function(){
-    self.content.scrollToBottom(300);
-    },100);
-   }
+  ionViewDidEnter(){
+    this.items ='';
+    this.novideos =false;
+    this.vip_training();
 
-  getchat(){   
+  }
+
+ngOnInit() {
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/options']);
+  }
+  
+  vip_training(){
     this.notifi.presentLoading();     
-    this.apiservice.postdata('getchat',{token:this.uuid},'').subscribe(data =>{    
-    this.response= data;          
+    this.apiservice.postdata('getlivestream','','').subscribe(data =>{
+
+    this.response=data;          
     console.log(data);
-    if(this.response.status == 1){  
-      this.notifi.stopLoading(); 
-      this.items= this.response.data;
-    
-    }else if( this.response.status == 0){
-      this.notifi.stopLoading(); 
- 
+  if(this.response.status == 1){  
+    this.notifi.stopLoading(); 
+    this.items= this.response.data;
+    if(this.errors.indexOf(this.items)>=0){
+      this.novideos=true;
+    }
+    console.log(this.items);
+  
+  }else{
+    this.novideos=true;
+    this.items=[];
+    this.notifi.stopLoading(); 
+  this.notifi.presentToast(this.response.msg,'danger');
+  }
+
+}, (err) => {
+this.notifi.stopLoading(); 
+console.log(err)
+});
+  }
+
+  photoURL(src) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(src);
+  }
+
+  link(l){
+    console.log(l.split('/').pop(-1));
+    var lin=l.split('/').pop(-1);
+    const iosoption: InAppBrowserOptions = {
+      zoom: 'no',
+      location:'yes',
+      toolbar:'yes',
+      clearcache: 'yes',
+      clearsessioncache: 'yes',
+      disallowoverscroll: 'yes',
+      enableViewportScale: 'yes'
     }
 
-    }, (err) => {
-    this.notifi.stopLoading(); 
-    console.log(err)
-    });
-
-   }
+    const browser = this.iab.create('https://www.youtube.com/watch?v='+lin,'_blank', iosoption);
+ 
 }
+
+}
+

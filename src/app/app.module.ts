@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { socket_config } from 'config';
@@ -15,10 +15,14 @@ const config: SocketIoConfig = { url: socket_config.SOCKET_URL, options: {} };
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { AES256 } from '@ionic-native/aes-256/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+import { Stripe } from '@ionic-native/stripe/ngx';
+import { ApplePay } from '@ionic-native/apple-pay/ngx';
+import { Toast } from '@ionic-native/toast/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ReactiveFormsModule,SocketIoModule.forRoot(config)],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,FormsModule, ReactiveFormsModule,SocketIoModule.forRoot(config)],
   providers: [
     FCM,
     StatusBar,
@@ -27,6 +31,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     UniqueDeviceID,
     AES256,
     InAppBrowser,
+    PayPal,
+    Stripe,
+    ApplePay,Toast,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>628606518890-4jrt2s9itnsagp8g55mupas01t3b1dbe.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.628606518890-4jrt2s9itnsagp8g55mupas01t3b1dbe</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAWfNCKckPT6MupU0yockXqzkRnQLpiIDk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>628606518890</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.church.esucristoVive</string>
+	<key>PROJECT_ID</key>
+	<string>newchurch-a0c2c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>newchurch-a0c2c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:628606518890:ios:485a92ec5db4eecc9bec13</string>
+	<key>DATABASE_URL</key>
+	<string>https://newchurch-a0c2c.firebaseio.com</string>
+</dict>
+</plist>

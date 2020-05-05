@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController, ModalController, LoadingController} from '@ionic/angular';
-
+import { Toast } from '@ionic-native/toast/ngx';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,7 @@ export class NotiService {
   constructor(
     public toastController: ToastController,
     public loadingController: LoadingController,
+    private toast: Toast
      
              ) { }
              
@@ -20,7 +21,7 @@ export class NotiService {
       duration: 3000,
       position: 'bottom',
       color: color,
-      mode:"ios",
+      mode:"ios"
     
     });
     toast.present();
@@ -29,7 +30,8 @@ export class NotiService {
   async presentLoading() {
     this.loading = await this.loadingController.create({     
       mode:"md",
-      cssClass:'custom-class custom-loading'
+      cssClass:'custom-class custom-loading',
+      duration:10000
    
     });
     this.loading.present();
@@ -59,6 +61,15 @@ export class NotiService {
      result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
+}
+
+nativeToast(msg){
+
+this.toast.show(msg, '5000', 'center').subscribe(
+  toast => {
+    console.log(toast);
+  }
+);
 }
 
 }

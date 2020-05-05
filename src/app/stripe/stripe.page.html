@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img class="logo-img" src="/assets/logo.png" width="120" alt=""></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <div sec1>
+    <h3 secHdng>Frequencia</h3>
+    <br>
+        <ion-button center btcss [routerLink]="['/card/'+0]">sulo una vez</ion-button>
+        <ion-button center btcss [routerLink]="['/subscribe/'+1]" >semanalmente</ion-button>
+        <ion-button center btcss [routerLink]="['/subscribe/'+2]">mensual</ion-button>
+        <ion-button center btcss [routerLink]="['/payment']" class="test"><ion-icon name="arrow-back-circle-outline"></ion-icon> Regresar</ion-button>
+  </div>
+</ion-content>
+
+

@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title><img src="/assets/logo.png" width="120" alt=""></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+  
+
+      <ion-slides *ngIf="errors.indexOf(items)==-1">
+          <ion-slide>
+          <ion-grid class="pd-ma videos">
+            <ion-card>
+              <h3>{{items[0].title}}</h3>
+              <iframe  [src]="photoURL(items[0].video)" width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen"> </iframe>   
+          <ion-text content>   
+            <p class="text-dr"> {{items[0].descr}}</p>     
+            
+            </ion-text>
+          </ion-card>
+           </ion-grid>
+           </ion-slide>      
+     </ion-slides>
+     <br>
+     <br>  
+     <hr>
+  
+     <ion-slides [options]="slideOpts" #slides>
+      <ion-slide *ngFor="let item of items">
+        <ion-grid class="pd-ma videos">
+               <ion-card>
+                  <h3>{{item.title}}</h3>
+                  <iframe  [src]="photoURL(item.video)" width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen"> </iframe>   
+             <ion-text content>   
+                <p class="text-dr"> {{item.descr}}</p>     
+                
+                </ion-text>
+              </ion-card>
+     </ion-grid>
+     </ion-slide> 
+    
+      </ion-slides>
+    
+  
+     
+  
+  </ion-content>
+  

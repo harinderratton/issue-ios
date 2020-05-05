@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img src="/assets/logo.png" width="120" alt=""></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content no-padding #content>
+		<div class="initiatemsg" *ngIf="errors.indexOf(items)>=0">Iniciar chat</div>
+	<div class="all-chats" *ngIf="errors.indexOf(items)==-1" >
+		
+	   <div *ngFor="let item of items"> 
+		<div class="left-finl-cht" *ngIf="item.sender_id!=uuid">
+			<img src="assets/imgs/default-avatar.png" class="usr-ims">				
+			<div class="bg-color-lft">{{item.msg}}</div>				
+	   </div>
+
+	<div class="right-chts" *ngIf="item.sender_id==uuid">
+			<div class="bg-color-r8">
+				{{item.msg}}
+			</div>
+	</div>
+	   </div>
+	
+	</div>
+	
+</ion-content>
+
+
+<ion-footer no-border>
+  <div class="input-wrap input-msgd">
+    <textarea placeholder="Type a message..." rows="3" [(ngModel)]="new_message"></textarea>
+    <button ion-button class="btn-sends" (click)="send()">Enviar</button>
+	<!-- <ul class="list-icons-sm">
+		<li> # </li>
+		<li> <ion-icon name="link"></ion-icon> </li>
+		<li> <ion-icon name="happy"></ion-icon> </li>
+	</ul> -->
+  </div>
+  <!-- <span class="add-tgs"> <ion-icon name="add"></ion-icon> Add tag</span> -->
+</ion-footer>

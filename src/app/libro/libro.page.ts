@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FCM } from '@ionic-native/fcm/ngx';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser ,InAppBrowserOptions} from '@ionic-native/in-app-browser/ngx';
 @Component({
   selector: 'app-libro',
   templateUrl: './libro.page.html',
@@ -23,7 +23,19 @@ export class LibroPage implements OnInit {
   ngOnInit() {
   }
   libro(){
-    const browser = this.iab.create('https://www.monicajaquez.com/es/libros');
+    const iosoption: InAppBrowserOptions = {
+      zoom: 'no',
+      location:'yes',
+      toolbar:'yes',
+      clearcache: 'yes',
+      clearsessioncache: 'yes',
+      disallowoverscroll: 'yes',
+      enableViewportScale: 'yes'
+    }
+
+    const browser = this.iab.create('https://www.monicajaquez.com/es/libros','_blank', iosoption);
   }
+
+
 
 }

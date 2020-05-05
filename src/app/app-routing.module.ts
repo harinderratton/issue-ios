@@ -38,6 +38,30 @@ const routes: Routes = [
   {
     path: 'palabras',
     loadChildren: () => import('./palabras/palabras.module').then( m => m.PalabrasPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'stripe',
+    loadChildren: () => import('./stripe/stripe.module').then( m => m.StripePageModule)
+  },
+  {
+    path: 'card/:status',
+    loadChildren: () => import('./card/card.module').then( m => m.CardPageModule)
+  },
+  {
+    path: 'applepay',
+    loadChildren: () => import('./applepay/applepay.module').then( m => m.ApplepayPageModule)
+  },
+  {
+    path: 'subscribe/:status',
+    loadChildren: () => import('./subscribe/subscribe.module').then( m => m.SubscribePageModule)
+  },
+  {
+    path: 'paypal',
+    loadChildren: () => import('./paypal/paypal.module').then( m => m.PaypalPageModule)
   }
 ];
 

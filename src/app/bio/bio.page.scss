@@ -20,6 +20,21 @@ ion-header{
   }
 }
 
+h3[secHdng]{
+  font-family: 'Freestyle Script' !important;
+  font-size:48px;
+  margin:0 0 20px;
+  color: var(--main-color);
+  &:after{
+    content: "";
+    width: 70px;
+    height: 5px;
+    background: #fcbe02;
+    display: block;
+    margin: -7px 0 0 12px;
+  }
+}
+
 ion-content{
   [sec1]{
     padding:15px 15px 20px;

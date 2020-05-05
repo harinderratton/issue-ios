@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img class="logo-img" src="/assets/logo.png" width="120" alt=""></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <div sec1>
+    <h3 secHdng>Donaciones</h3>
+        <p style="text-align: center;color:gray"> Por favor seleccione:</p>
+        <ion-button center btcss [routerLink]="['/applepay']">Apple Pay</ion-button>
+        <ion-button center btcss [routerLink]="['/stripe']" >Tarjeta de credito o debito</ion-button>
+        <ion-button center btcss  [routerLink]="['/paypal']" >Paypal</ion-button>
+  </div>
+</ion-content>
+
+
