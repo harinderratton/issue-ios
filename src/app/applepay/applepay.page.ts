@@ -64,7 +64,7 @@ export class ApplepayPage implements OnInit {
       ],
       supportedNetworks: ['visa', 'masterCard', 'discover'],
       merchantCapabilities: ['3ds', 'debit', 'credit'],          
-      merchantIdentifier: 'merchant.com.churchapp.monica',
+      merchantIdentifier: 'merchant.com.example',
       currencyCode: 'USD',
       countryCode: 'US',
       billingAddressRequirement: 'none',

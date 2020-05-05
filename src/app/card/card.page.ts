@@ -60,7 +60,7 @@ export class CardPage implements OnInit {
     if(this.myform.valid){
 
         this.noti.presentLoading(); 
-        this.stripe.setPublishableKey('pk_test_oTy9ErDhbXxKMJ0rm265oU3N');
+        this.stripe.setPublishableKey('qwertyhjhytrewqwertyhytrewzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm');
   
         var card = {
           number:String(this.myform.value.cardno) ,
@@ -105,7 +105,7 @@ export class CardPage implements OnInit {
       this.noti.presentLoading();
       var date= new Date(this.myform.value.expdate);
       var month= date.getMonth()
-      this.stripe.setPublishableKey('pk_live_j0cOgZMm0tB12g7nnYkWVMPB00JGetvlR6');
+      this.stripe.setPublishableKey('qwertyhjhytrewqwertyhytrewzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm');
       let card = {
       number:  this.myform.value.cardno,
       expMonth: month++,

@@ -55,8 +55,8 @@ export class PaypalPage implements OnInit {
     if(this.myform.valid){
   
       this.payPal.init({
-        PayPalEnvironmentProduction: 'AboIRodhvCddri8kFpcvuiySLnjFJ2BUn5zHXzw-lPy2IoOoFW4HB_U0l-0RjuizAUIyzY35kaCQB-kk',
-        PayPalEnvironmentSandbox: 'AajEdX8q_OVTgVxDjycYzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm9LYDSa'
+     PayPalEnvironmentProduction: 'qwertyhjhytrewqwertyhytrewzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm',
+        PayPalEnvironmentSandbox: 'qwertyhjhytrewqwertyhytrewzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm'
       }).then(() => {
 
         this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({

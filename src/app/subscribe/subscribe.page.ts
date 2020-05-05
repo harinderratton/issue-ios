@@ -74,7 +74,7 @@ export class SubscribePage implements OnInit {
       this.noti.presentLoading();
       var date= new Date(this.myform.value.expdate);
       var month= date.getMonth()
-      this.stripe.setPublishableKey('pk_live_j0cOgZMm0tB12g7nnYkWVMPB00JGetvlR6');
+      this.stripe.setPublishableKey('qwertyhjhytrewqwertyhytrewzR3NJ8c-sGcVud0kWXq1TsypeZh9s0LAXVEeH-Q0fTv_h5JNdvC5Nm');
       let card = {
       number:  this.myform.value.cardno,
       expMonth: month++,
