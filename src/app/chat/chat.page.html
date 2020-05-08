@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-toolbar>
+	  <ion-buttons slot="start">
+		<ion-menu-button></ion-menu-button>
+	  </ion-buttons>
+	  <ion-title><img class="logo-img" src="/assets/logo.png" width="120" alt=""></ion-title>
+	</ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+	 
+	<div sec1>
+		<h3 secHdng>Live Streaming</h3>
+		
+	
+	
+	  </div>
+	<p class="nodata" *ngIf="novideos">No video found</p>
+  
+	  <ion-slides  mode="ios" *ngIf="errors.indexOf(this.items)==-1">
+		  <ion-slide>
+		  <ion-grid class="pd-ma videos">
+			<ion-card>
+			  <h6>{{items?.title}}</h6>
+			  
+		   
+			  <div (click)="link(items?.video)">
+  
+				<iframe  [src]="photoURL(items?.video)"  width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen" scrolling="yes" style="   pointer-events: none;
+				">  </iframe> 
+  
+			  </div>
+		  
+		  
+			  <ion-text content>   
+			<p class="text-dr">wertyuiklqwedrftghjk  {{items?.descr}}</p>     
+			
+			</ion-text>
+		  </ion-card>
+		   </ion-grid>
+		   </ion-slide>      
+	 </ion-slides>
+
+  
+	 
+  
+  </ion-content>
+  

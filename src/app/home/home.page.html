@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img class="logo-img" src="/assets/logo.png" width="120" alt=""></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div sec1 *ngIf="video?.length==0">
+    <img src="/assets/img1.jpg" alt="">
+
+ 
+    <h2>TEMA: LA FE ELIMINA LAS LIMITACIONES</h2>
+    <p>La fe es la llave para nosotros poder alcanzar las promesas, nos vamos a encontrar con obstáculos pero estos no están para paralizar nuestro camino, sino para llevarnos a otro nivel.</p>
+    <ion-button routerLink="/palabras" center btn-theme>VER PREDICAS COMPLETAS</ion-button>
+  </div>
+
+  <div sec1  *ngIf="video?.length>0">
+   
+
+    <div (click)="link(video[0]?.video)" >
+
+      <iframe  [src]="photoURL(video[0]?.video)"  width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen" scrolling="yes" style="   pointer-events: none;
+      ">  </iframe> 
+
+    </div>
+    <h2>{{video[0]?.title}}</h2>
+    <p>{{video[0]?.descr}}</p>
+    <ion-button routerLink="/palabras" center btn-theme>VER PREDICAS COMPLETAS</ion-button>
+  </div>
+
+  <div dynamic><img  routerLink="/event"  src="{{url}}{{items?.picture}}" alt=""></div>
+
+  <div sec3>
+    <img src="/assets/img3.png" alt="">
+    <h3>Viviendo Tu Vida Al MAXIMO</h3>
+    <p>73 REFLEXIONES De Inspiración Que Activarán Tu Fe y Te Ayudarán En Tu Caminar Para Vivir En Plenitud</p>
+    <ion-button center btn-theme btn-yellow routerLink="/libro">MAS INFORMACION</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "628606518890",
+    "firebase_url": "https://newchurch-a0c2c.firebaseio.com",
+    "project_id": "newchurch-a0c2c",
+    "storage_bucket": "newchurch-a0c2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628606518890:android:96e4cb48255d02cc9bec13",
+        "android_client_info": {
+          "package_name": "io.church.esucristoViveandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "628606518890-j88vfi63giab5o4hcta4lv0s1ceese7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcngQpU6iRo_2Tj_0bdc59dulv1-ZMYeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "628606518890-j88vfi63giab5o4hcta4lv0s1ceese7p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "628606518890-4jrt2s9itnsagp8g55mupas01t3b1dbe.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.church.esucristoVive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
