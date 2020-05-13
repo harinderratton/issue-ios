@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><img class="logo-img" src="/assets/logo.png" width="120" alt=""></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="nodata" *ngIf="novideos">No videos found</p>
+
+    <ion-slides *ngIf="items?.length>0" mode="ios">
+        <ion-slide>
+        <ion-grid class="pd-ma videos">
+          <ion-card>
+            <h6>{{items[0].title}}</h6>
+            
+         
+            <div (click)="link(items[0].video)">
+
+              <iframe  [src]="photoURL(items[0].video)"  width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen" scrolling="yes" style="   pointer-events: none;
+              ">  </iframe> 
+
+            </div>
+        
+        
+            <ion-text content>   
+          <p class="text-dr"> {{items[0].descr}}</p>     
+          
+          </ion-text>
+        </ion-card>
+         </ion-grid>
+         </ion-slide>      
+   </ion-slides>
+   <br>
+   <br>  
+   <hr>
+
+   <ion-slides #slides mode="ios" pager={true} [options]="slideOpts">
+    <ion-slide *ngFor="let item of items" overflow-scroll="true" >
+     
+             <ion-card>
+                <h6>{{item.title}}</h6>
+                <div (click)="link(item.video)">
+
+                  <iframe  [src]="photoURL(item.video)" width="100%" height="200" frameborder="0"  allowfullscreen="allowfullscreen" scrolling="yes" style="   pointer-events: none;
+                  ">  </iframe> 
+
+                </div>
+               
+               
+              	
+           <ion-text content>   
+              <p class="text-dr"> {{item.descr}}</p>     
+              
+              </ion-text>
+            </ion-card>
+  
+   </ion-slide> 
+  
+    </ion-slides>
+  
+
+   
+
+</ion-content>

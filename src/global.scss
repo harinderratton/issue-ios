@@ -24,3 +24,46 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.logo-img{
+    margin-left: -113px;
+    width: 103px;
+    margin-bottom: 13px;
+}
+.nodata{
+    margin-left: 31%;
+    margin-top: 23% !important;
+    color: grey;
+
+}
+
+.loading-wrapper.sc-ion-loading-md{
+	background:none;
+	box-shadow:none;
+}
+
+.spinner-bubbles.sc-ion-loading-md, .spinner-circles.sc-ion-loading-md, .spinner-crescent.sc-ion-loading-md, .spinner-dots.sc-ion-loading-md, .spinner-lines.sc-ion-loading-md, .spinner-lines-small.sc-ion-loading-md {
+    color:#1e6075
+}
+.myclass input{
+
+    margin-right: 30px;
+  }
+
+
+  .box-feilds{
+
+    ion-select {
+
+
+        margin-right: 32px;
+      }
+
+
+  } 
+   
+
+
+
+
+
